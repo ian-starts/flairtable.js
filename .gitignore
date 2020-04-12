@@ -1,5 +1,5 @@
 # Typescript v1 declaration files
-typings/
+src/typings/
 
 node_modules/
 
