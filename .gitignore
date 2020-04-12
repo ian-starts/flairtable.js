@@ -2,4 +2,10 @@
 typings/
 
 node_modules/
+
+## TS generated stuff
 dist/
+
+#IDE
+.idea
+.vscode
