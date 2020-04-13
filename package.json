@@ -1,6 +1,6 @@
 {
   "name": "flairtable",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A js SDK for flairtable. Airtable for your frontend",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,12 +19,12 @@
     "babel-jest": "^25.3.0",
     "jest": "^25.3.0",
     "tslint": "^6.1.1",
-    "typescript": "^3.8.3"
-  },
-  "dependencies": {
+    "typescript": "^3.8.3",
     "@types/axios": "^0.14.0",
     "@types/es6-promise": "^3.3.0",
-    "@types/lodash": "^4.14.149",
+    "@types/lodash": "^4.14.149"
+  },
+  "dependencies": {
     "axios": "^0.19.2",
     "lodash": "^4.17.15"
   }
