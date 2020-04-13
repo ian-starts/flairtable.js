@@ -1,16 +1,17 @@
 {
   "name": "flairtable",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A js SDK for flairtable. Airtable for your frontend",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "repository": "https://github.com/ian-starts/flairtable.js",
   "scripts": {
     "prepublish": "npm run build",
     "test": "jest",
     "build": "tsc"
   },
   "author": "Ian Kok",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
