@@ -23,6 +23,8 @@
   "dependencies": {
     "@types/axios": "^0.14.0",
     "@types/es6-promise": "^3.3.0",
-    "axios": "^0.19.2"
+    "@types/lodash": "^4.14.149",
+    "axios": "^0.19.2",
+    "lodash": "^4.17.15"
   }
 }

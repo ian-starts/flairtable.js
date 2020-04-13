@@ -1,22 +1,25 @@
-import {Flairtable} from "../dist";
+import {Flairtable} from "../src";
 
 test("see if i can fetch all", () => {
         expect.assertions(1);
-        const base = Flairtable({apiKey: "123"}).base("apptvMhO0o7aFEB7m");
-        const table = base("Table 1");
-        const paginator = table.select();
+        const base = Flairtable({}).base("");
+        const table = base("");
+        const paginator = table.select({
+            maxRecords: 2,
+            fields: [""],
+            pageSize: 2,
+            sort: [{field: "", direction: ""}]
+        });
         const promise = new Promise(((resolve, reject) => {
             paginator.eachPage((records, fetchNextPage) => {
-                console.log(records);
-                return resolve(records);
+                return resolve([records]);
                 // fetchNextPage();
             }, (error) => {
-                return reject(error)
+                return reject(error);
             });
         }));
         return promise.then((records) => {
             return expect(records.length).toBeGreaterThan(0);
         })
-
     }
 );

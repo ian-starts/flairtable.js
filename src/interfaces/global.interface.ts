@@ -13,15 +13,16 @@ interface FlairTable {
 }
 
 interface QueryObject {
-    fields?: string,
+    fields?: string[],
     filterByFormula?: string,
-    maxRecords?: string,
-    pageSize?: string,
-    sort?: string,
+    maxRecords?: number,
+    pageSize?: number,
+    sort?: Object[],
     view?: string,
     cellFormat?: string,
     timeZone?: string,
     userLocale?: string,
+    offset?: string
 }
 
 interface Table {

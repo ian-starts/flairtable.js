@@ -11,12 +11,18 @@ export const getPaginator = (config: ConfigOptions,
         eachPage: (page: Page, done: Done) => {
             const response = getRecords(getClient(config.apiKey, undefined, config.requestTimeout), baseId, tableId, query);
             response.then((records) => {
-                // if (records.offset){
-                //
-                // }
-                page(records.records, () => {return;});
-            })
+                if (records.offset) {
+                    return page(records.records, () => {
+                        getPaginator(config, baseId, tableId, {
+                            ...query,
+                            offset: records.offset
+                        }).eachPage(page, done)
+                    });
+                }
+                return page(records.records, () => done(null))
+            });
         }
+
     }
 };
 
