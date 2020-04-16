@@ -8,21 +8,45 @@ export const getPaginator = (config: ConfigOptions,
                              query?: QueryObject
 ) => {
     return {
-        eachPage: (page: Page, done: Done) => {
+        eachPage: (page: Page, done?: Done) => {
             const response = getRecords(getClient(config.apiKey, undefined, config.requestTimeout), baseId, tableId, query);
-            response.then((records) => {
-                if (records.offset) {
-                    return page(records.records, () => {
-                        getPaginator(config, baseId, tableId, {
-                            ...query,
-                            offset: records.offset
-                        }).eachPage(page, done)
-                    });
-                }
-                return page(records.records, () => done(null))
-            });
-        }
+            if (done) {
+                response.then((records) => {
+                    if (records.offset) {
+                        return page(records.records, () => {
+                            getPaginator(config, baseId, tableId, {
+                                ...query,
+                                offset: records.offset
+                            }).eachPage(page, done)
+                        });
+                    }
+                    return page(records.records, () => done(null))
+                });
+            } else {
+                return response.then((records) => {
+                    if (records.offset) {
+                        return page(records.records, () => {
+                            getPaginator(config, baseId, tableId, {
+                                ...query,
+                                offset: records.offset
+                            }).eachPage(page)
+                        });
+                    }
+                    return Promise.resolve(null)
+                });
+            }
 
+        },
+        firstPage: (done?: Done) => {
+            const response = getRecords(getClient(config.apiKey, undefined, config.requestTimeout), baseId, tableId, query);
+            if (done) {
+                response.then((records) => {
+                    return done(records.records)
+                })
+            } else {
+                return response.then((records) => records.records)
+            }
+        }
     }
 };
 

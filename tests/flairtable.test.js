@@ -2,23 +2,19 @@ import {Flairtable} from "../src";
 
 test("see if i can fetch all", () => {
         expect.assertions(1);
-        const base = Flairtable({}).base("");
+        const base = Flairtable({apiKey: ""}).base("");
         const table = base("");
+
+
         const paginator = table.select({
-            maxRecords: 2,
-            fields: [""],
-            pageSize: 2,
-            sort: [{field: "", direction: ""}]
+            maxRecords: 1,
         });
-        const promise = new Promise(((resolve, reject) => {
-            paginator.eachPage((records, fetchNextPage) => {
-                return resolve([records]);
-                // fetchNextPage();
-            }, (error) => {
-                return reject(error);
-            });
-        }));
+        const promise = new Promise((resolve, reject) => {
+                paginator.firstPage().then((records) => resolve(records));
+            }
+        );
         return promise.then((records) => {
+            console.log(records);
             return expect(records.length).toBeGreaterThan(0);
         })
     }

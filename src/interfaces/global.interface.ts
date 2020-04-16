@@ -27,11 +27,12 @@ interface QueryObject {
 
 interface Table {
     select: (query?: QueryObject) => PaginatedResult,
-    find: (itemId: string, singleItem:SingleItem) => void,
+    find: (itemId: string, singleItem: SingleItem) => void,
 }
 
 interface PaginatedResult {
-    eachPage: (page: Page, done: Done) => void,
+    eachPage: (page: Page, done?: Done) => void | Promise<any>,
+    firstPage: (done?: Done) => void | Promise<any>,
 }
 
 interface FetchNextPage {
