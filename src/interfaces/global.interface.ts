@@ -27,7 +27,7 @@ interface QueryObject {
 
 interface Table {
     select: (query?: QueryObject) => PaginatedResult,
-    find: (itemId: string, singleItem: SingleItem) => void,
+    find: (itemId: string, singleItem?: SingleItem) => void | Promise<any>,
 }
 
 interface PaginatedResult {
