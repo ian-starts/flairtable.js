@@ -3,7 +3,7 @@ import {Config} from "../../typings/axios";
 
 const getClient = (token: string, baseUrl?: string, requestTimeOut?: number) => {
         const config: Config = {
-            baseURL: baseUrl ?? 'https://europe-west1-flairtable.cloudfunctions.net/table',
+            baseURL: baseUrl ?? 'https://flairtable.com/api/v1',
             timeout: requestTimeOut,
             retry: 5,
             headers: {
