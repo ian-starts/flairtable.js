@@ -12,6 +12,13 @@ interface FlairTable {
     base: (baseId: string) => (tableId: string) => Table
 }
 
+interface AirtableException {
+    error: any,
+    message: string,
+    statusCode : number,
+    toString: () => string
+}
+
 interface QueryObject {
     fields?: string[],
     filterByFormula?: string,
