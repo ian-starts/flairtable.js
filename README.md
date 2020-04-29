@@ -7,6 +7,9 @@ definitions though. I thought it really missed that. One major problem with Airt
 in the frontend. Flairtable fixes that. Get your auth key [here]() and use Airtable as a regular data source, 
 without worrying about security.
 
+## Docs
+You can find detailed docs over [here](https://docs.flairtable.com).
+
 ## Installation
 
 ### npm
