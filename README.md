@@ -4,11 +4,15 @@ The Flairtable JS library. Secure Airtable for your frontend.
 
 This library mimics the workings described in the [airtable docs](https://airtable.com/api). It adds typescript 
 definitions though. I thought it really missed that. One major problem with Airtable is that you can't directly use it 
-in the frontend. Flairtable fixes that. Get your auth key [here]() and use Airtable as a regular data source, 
+in the frontend. Flairtable fixes that. Get your auth key [here](https://flairtable.com/signup) and use Airtable as a regular data source, 
 without worrying about security.
 
 ## Docs
 You can find detailed docs over [here](https://docs.flairtable.com).
+
+## Pre-requisites
+* [Flairtable API Key](https://docs.flairtable.com)
+* [Airtable API Key](https://airtable.com/api)
 
 ## Installation
 
