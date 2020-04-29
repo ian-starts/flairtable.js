@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "repository": "https://github.com/ian-starts/flairtable.js",
   "scripts": {
-    "prepublish": "npm run build",
+    "prepublish": "npm run build  && npm run test",
     "test": "jest",
     "build": "tsc"
   },
