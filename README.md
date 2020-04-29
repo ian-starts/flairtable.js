@@ -11,7 +11,7 @@ without worrying about security.
 You can find detailed docs over [here](https://docs.flairtable.com).
 
 ## Pre-requisites
-* [Flairtable API Key](https://docs.flairtable.com)
+* [Flairtable API Key](https://flairtable.com/signup)
 * [Airtable API Key](https://airtable.com/api)
 
 ## Installation
