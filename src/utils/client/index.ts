@@ -2,9 +2,9 @@ import axios from 'axios';
 import {Config} from "../../typings/axios";
 import responseRejected from "./interceptor";
 
-const getClient = (token: string, baseUrl?: string, requestTimeOut?: number) => {
+export const getClient = (token: string, baseUrl?: string, requestTimeOut?: number) => {
     const config = {
-        baseURL: baseUrl ?? 'https://flairtable.com/api/v1',
+        baseURL: baseUrl ?? 'http://localhost:5001/flairtable/us-central1/api/api/v1',
         timeout: requestTimeOut,
         retry: 5,
         headers: {
@@ -15,4 +15,18 @@ const getClient = (token: string, baseUrl?: string, requestTimeOut?: number) => 
     instance.interceptors.response.use(undefined, responseRejected)
     return instance;
 };
-export default getClient;
+
+export const getUserClient = (token: string, userBearerToken: string, baseUrl?: string, requestTimeOut?: number) => {
+    const config = {
+        baseURL: baseUrl ?? 'http://localhost:5001/flairtable/us-central1/api/api/v1',
+        timeout: requestTimeOut,
+        retry: 5,
+        headers: {
+            authorization: 'Bearer ' + token,
+            "x-user-authorization": 'Bearer ' + userBearerToken
+        },
+    };
+    const instance = axios.create(config as Config)
+    instance.interceptors.response.use(undefined, responseRejected)
+    return instance;
+};

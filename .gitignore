@@ -9,3 +9,5 @@ dist/
 #IDE
 .idea
 .vscode
+
+tests/request.test.js

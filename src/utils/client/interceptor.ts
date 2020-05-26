@@ -7,11 +7,11 @@ const responseRejected = function (err: any) {
     // If config does not exist or the retry option is not set, reject
     if (!config || !config.retry) {
         const error = checkStatusForError(err.response.status, err);
-        return Promise.reject( error === null ? err :  error.toString());
+        return Promise.reject(error === null ? err : error.toString());
     }
     if (err.response.status !== 429) {
         const error = checkStatusForError(err.response.status, err);
-        return Promise.reject( error === null ? err :  error.toString());
+        return Promise.reject(error === null ? err : error.toString());
     }
     // Set the variable for keeping track of the retry count
     config.__retryCount = config.__retryCount || 0;
@@ -20,7 +20,7 @@ const responseRejected = function (err: any) {
     if (config.__retryCount >= config.retry) {
         // Reject with the error
         const error = checkStatusForError(err.response.status, err);
-        return Promise.reject( error === null ? err :  error.toString());
+        return Promise.reject(error === null ? err : error.toString());
     }
 
     // Increase the retry count
@@ -90,6 +90,15 @@ const checkStatusForError = (statusCode: number, error: any) => {
             'The service is temporarily unavailable. Please retry shortly.',
             statusCode
         );
+    } else if (statusCode === 409) {
+        return (function () {
+            const type = 'ENTITY_CONFLICT';
+            const message =
+                error && error.response && error.response.data && error.response.data.error
+                    ? error.response.data.error.message
+                    : 'Could not find what you are looking for';
+            return AirtableException(type, message, statusCode);
+        })();
     } else if (statusCode >= 400) {
         return (function () {
             const type = error && error.type ? error.type : 'UNEXPECTED_ERROR';
