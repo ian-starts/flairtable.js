@@ -55,7 +55,8 @@ const getClientWithResponse = (response: AxiosResponse<any>, config: ConfigOptio
 }
 
 export const getOnAuthChange = (eventHandler: Evt<User | undefined>) => (callback: (user?: User) => void) => {
-    eventHandler.attach(callback);
+    const ctx = Evt.newCtx();
+    eventHandler.attach(ctx, callback);
     const storedAuthToken = getStoredAuthToken();
     if (storedAuthToken) {
         const decodedToken: any = jwt_decode(storedAuthToken);
@@ -64,7 +65,7 @@ export const getOnAuthChange = (eventHandler: Evt<User | undefined>) => (callbac
         eventHandler.post(undefined);
     }
     return () => {
-        eventHandler.detach();
+        eventHandler.detach(ctx);
     }
 }
 
