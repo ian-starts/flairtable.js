@@ -4,7 +4,7 @@ import responseRejected from "./interceptor";
 
 export const getClient = (token: string, baseUrl?: string, requestTimeOut?: number) => {
     const config = {
-        baseURL: baseUrl ?? 'http://localhost:5001/flairtable/us-central1/api/api/v1',
+        baseURL: baseUrl ?? 'https://flairtable.com/api/v1',
         timeout: requestTimeOut,
         retry: 5,
         headers: {
@@ -18,7 +18,7 @@ export const getClient = (token: string, baseUrl?: string, requestTimeOut?: numb
 
 export const getUserClient = (token: string, userBearerToken: string, baseUrl?: string, requestTimeOut?: number) => {
     const config = {
-        baseURL: baseUrl ?? 'http://localhost:5001/flairtable/us-central1/api/api/v1',
+        baseURL: baseUrl ?? 'https://flairtable.com/api/v1',
         timeout: requestTimeOut,
         retry: 5,
         headers: {

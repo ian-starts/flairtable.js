@@ -47,9 +47,13 @@ const checkStatusForError = (statusCode: number, error: any) => {
             statusCode
         );
     } else if (statusCode === 403) {
+        const message =
+            error && error.response && error.response.data && error.response.data.error
+                ? error.response.data.error.message
+                : 'You are not authorized to perform this operation';
         return AirtableException(
             'NOT_AUTHORIZED',
-            'You are not authorized to perform this operation',
+            message,
             statusCode
         );
     } else if (statusCode === 404) {
